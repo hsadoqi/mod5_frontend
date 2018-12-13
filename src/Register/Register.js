@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import './Register.css'
 import { newUser } from '../store/actions/userActions'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router'
+// import { }
 
 class Register extends Component {
     state = {
@@ -20,11 +22,18 @@ class Register extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         this.props.newUser(this.state)
-        console.log('submitted')
     }
 
+    componentDidUpdate(prevProps){
+        if(prevProps.user !== this.props.user){ 
+            localStorage.setItem('token', this.props.user.id)
+            this.props.history.push(`/${this.props.user.id}/profile`)
+        }
+     }
+
     render(){
-        console.log(this.props)
+        // console.log(this.props.user)
+        // console.log(this.props.location)
         return (
             <div>
                 <h2>Create a New Account</h2>
@@ -53,4 +62,11 @@ const mapDispatchToProps = (dispatch) => {
         newUser: (user) => dispatch(newUser(user))
     }
 }
-export default connect(null, mapDispatchToProps)(Register)
+
+const mapStateToProps = state => {
+    // console.log(state.user)
+    // console.log(state)
+    return {user: state.user}
+}
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Register))

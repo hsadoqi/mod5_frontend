@@ -20,7 +20,7 @@ class LogIn extends Component {
     }
 
     render(){
-        // console.log(this.state)
+        console.log(this.state)
         return (
             <div className='login'>
             <h2>Log In</h2>

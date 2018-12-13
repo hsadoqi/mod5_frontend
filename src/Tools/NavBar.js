@@ -8,10 +8,12 @@ class NavBar extends Component {
 
     handleClick = (e) => {
         e.preventDefault()
+        console.log('hi')
         if(this.props.location.pathname === '/'){
             this.scrollToBottom()
         } else {
             this.props.history.push('/')
+            // console.log(this.props.location)
             this.scrollToBottom()
         }
     }

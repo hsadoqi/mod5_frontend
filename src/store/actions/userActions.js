@@ -15,6 +15,6 @@ export const newUser = (userInfo) => {
             }, 
             body: JSON.stringify({user: userInfo})
         }).then(res => res.json())
-        .then(console.log)
+        .then(res => dispatch(createUser(res)))
     }
 }
