@@ -1,0 +1,39 @@
+form {
+    padding: 16px;
+    box-sizing: border-box;
+    /* text-align:center; */
+    /* margin: auto; */
+    /* margin-top: 0px; */
+    /* display: flex; */
+}
+
+/* label {
+
+    display: inline-block;
+    margin-left: 18px;
+    padding-top: 10px;
+    font-size: 14px;
+} */
+
+input {
+    width: 50%;
+    padding: 15px;
+    /* text-align:center; */
+    margin: 10px 0 22px 0;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    /* border: none; */
+}
+
+.submit-btn{
+    background: black;
+    color: #fff;
+    /* margin:px; */
+    border-radius:5px;
+    line-height: 25px;
+    color: white;
+    padding: 8px 30px;
+    text-decoration:none;
+    text-transform: uppercase;
+}

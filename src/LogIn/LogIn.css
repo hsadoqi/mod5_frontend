@@ -1,0 +1,17 @@
+.login {
+    text-align:center;
+    margin-top: 20%;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding: 20px;
+    background-color: #282e34;
+    color: #ddd
+}
+
+.login h2 {
+    font-size: 30px;
+}
+
+.login label{
+    font-size: 20px;
+}
