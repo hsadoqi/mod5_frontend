@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import './LogIn.css'
+import { connect } from 'react-redux'
+import { logInUser } from '../store/actions/userActions'
 
 class LogIn extends Component {
     state = {
@@ -16,11 +18,12 @@ class LogIn extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        // console.log('logged in!')
+        this.props.logInUser(this.state) 
     }
 
+
     render(){
-        console.log(this.state)
+        // console.log(this.props.user)
         return (
             <div className='login'>
             <h2>Log In</h2>
@@ -40,4 +43,11 @@ class LogIn extends Component {
     }
 }
 
-export default LogIn
+const mapDispatchToProps = dispatch => {
+    return {
+        logInUser: (user) => dispatch(logInUser(user))
+    }
+}
+
+
+export default connect(null, mapDispatchToProps)(LogIn)

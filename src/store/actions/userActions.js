@@ -1,12 +1,12 @@
 // Action Creators
-const createUser = (user) => ({ type: 'CREATE_USER', payload: user})
+const getUser = (user) => ({type: 'LOGIN_USER', payload: user })
 
 // Thunk creators 
 
 export const newUser = (userInfo) => {
     console.log(userInfo)
     return(dispatch) => {
-        console.log(dispatch)
+        // console.log(dispatch)
         return fetch (`http://localhost:3000/users`, {
             method: 'POST', 
             headers: {
@@ -15,6 +15,38 @@ export const newUser = (userInfo) => {
             }, 
             body: JSON.stringify({user: userInfo})
         }).then(res => res.json())
-        .then(res => dispatch(createUser(res)))
+        .then(res => dispatch(getUser(res)))
     }
 }
+
+export const logInUser = (userInfo) => {
+    return(dispatch) => {
+        return fetch('http://localhost:3000/login', {
+            method: 'POST', 
+            headers: {
+                "Content-type": 'application/json', 
+                Accepts: 'application/json'
+            }, 
+            body: JSON.stringify({
+                user: userInfo
+                })
+            }).then(res => res.json())
+            .then(res => dispatch(getUser(res))
+            )
+        }
+    }
+
+// export const findUser = (token) => {
+//     console.log(typeof token)
+//     return(dispatch) => {
+//         return fetch('http://localhost:3000/current_user', {
+//         headers: {
+//           'Content-type': 'application/json', 
+//           Accepts: 'application/json', 
+//           Authorization: token
+//         }
+//       }).then(res => res.json())
+//       .then(res => console.log(res))
+//       .catch(console.error)
+//     }
+// }

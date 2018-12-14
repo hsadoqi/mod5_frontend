@@ -24,16 +24,7 @@ class Register extends Component {
         this.props.newUser(this.state)
     }
 
-    componentDidUpdate(prevProps){
-        if(prevProps.user !== this.props.user){ 
-            localStorage.setItem('token', this.props.user.id)
-            this.props.history.push(`/${this.props.user.id}/profile`)
-        }
-     }
-
     render(){
-        // console.log(this.props.user)
-        // console.log(this.props.location)
         return (
             <div>
                 <h2>Create a New Account</h2>
@@ -63,10 +54,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 }
 
-const mapStateToProps = state => {
-    // console.log(state.user)
-    // console.log(state)
-    return {user: state.user}
-}
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Register))
+export default withRouter(connect(null, mapDispatchToProps)(Register))
