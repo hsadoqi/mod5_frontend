@@ -15,7 +15,7 @@ export const newUser = (userInfo) => {
             }, 
             body: JSON.stringify({user: userInfo})
         }).then(res => res.json())
-        .then(res => dispatch(getUser(res)))
+        .then(res => dispatch(getUser(res.user)))
     }
 }
 
@@ -30,23 +30,24 @@ export const logInUser = (userInfo) => {
             body: JSON.stringify({
                 user: userInfo
                 })
-            }).then(res => res.json())
-            .then(res => dispatch(getUser(res))
-            )
+            })
+            .then(res => res.json())
+            .then(res => {
+                localStorage.setItem('token', res.jwt)
+                dispatch(getUser(res.user))
+            })
         }
     }
 
-// export const findUser = (token) => {
-//     console.log(typeof token)
-//     return(dispatch) => {
-//         return fetch('http://localhost:3000/current_user', {
-//         headers: {
-//           'Content-type': 'application/json', 
-//           Accepts: 'application/json', 
-//           Authorization: token
-//         }
-//       }).then(res => res.json())
-//       .then(res => console.log(res))
-//       .catch(console.error)
-//     }
-// }
+export const findUser = (token) => {
+    return dispatch => {
+        return fetch('http://localhost:3000/current_user', {
+            headers: {
+              'Content-type': 'application/json', 
+              Accepts: 'application/json', 
+              Authorization: token
+            }
+          }).then(res => res.json())
+          .then(res => dispatch(getUser(res.user)))
+    }
+}

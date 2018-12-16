@@ -18,12 +18,12 @@ class LogIn extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault()
-        this.props.logInUser(this.state) 
+        this.props.logInUser(this.state)
     }
 
 
     render(){
-        // console.log(this.props.user)
+        console.log(this.props.user)
         return (
             <div className='login'>
             <h2>Log In</h2>
@@ -43,6 +43,12 @@ class LogIn extends Component {
     }
 }
 
+const mapStateToProps = state => {
+    return {
+        user: state.user
+    }
+}
+
 const mapDispatchToProps = dispatch => {
     return {
         logInUser: (user) => dispatch(logInUser(user))
@@ -50,4 +56,4 @@ const mapDispatchToProps = dispatch => {
 }
 
 
-export default connect(null, mapDispatchToProps)(LogIn)
+export default connect(mapStateToProps, mapDispatchToProps)(LogIn)

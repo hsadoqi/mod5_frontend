@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import './NavBar.css'
 import { animateScroll as scroll } from "react-scroll";
-import { withRouter } from 'react-router'
+import { withRouter} from 'react-router'
+import { Link } from 'react-router-dom'
+// use react router dom
 
 
 class NavBar extends Component {
@@ -24,10 +26,10 @@ class NavBar extends Component {
         return(
             <div className='wrapper'>
                 <nav className='black'>
-                    <div className='logo'><a href='/'>LOGO</a></div>
+                    <div className='logo'><Link to='/'>LOGO</Link></div>
                     <ul>
-                        <li className='active'><a href='/login'>Log In</a></li>
-                        <li className='active' onClick={this.handleClick}><a href='/register'>Register</a></li>
+                        <li className='active'><Link to='/login'>Log In</Link></li>
+                        <li className='active' onClick={this.handleClick}><Link to='/'>Register</Link></li>
                     </ul>
                 </nav>
             </div>

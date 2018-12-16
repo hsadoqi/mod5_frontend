@@ -1,5 +1,5 @@
 import thunk from 'redux-thunk'
-import { createStore, applyMiddleware, combineReducers } from 'redux'
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux'
 // import hobbitReducer from './reducers/hobbitReducer'
 // import hogReducer from './reducers/hogReducer'
 import userReducer from './reducers/userReducer'
@@ -11,7 +11,7 @@ import userReducer from './reducers/userReducer'
 //   hogs: hogReducer
 // })
 
-const store = createStore(userReducer, applyMiddleware(thunk))
+const store = createStore(userReducer, compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))
 
 export default store
 // export * from './actions/hobbitActions'
