@@ -8,37 +8,33 @@ import Homepage from './Homepage/Homepage'
 import Register from './Register/Register'
 import { connect } from 'react-redux'
 import { findUser } from './store/actions/userActions'
+import Collaboration from './Collaboration/Collaboration'
 
 class App extends Component {
-  state = {
-    user: null
-  }
 
   componentDidMount = () => {
     let token = localStorage.getItem('token')
-    // // console.log(this.props.findUser)
     if(token){
       this.props.findUser(token)
     }
   }
 
   componentDidUpdate(prevProps){
-    if(prevProps.user.id !== this.props.user.id){
-      // console.log('hello')
-       this.props.history.push(`/${this.props.user.id}/homepage`)
+    if(prevProps.user !== this.props.user){
+      this.props.history.push(`/homepage`)
      }
     }
   
 
   render() {
-    // console.log(this.props.user)
     return (
       <div className="App">
-          <NavBar />
+          <NavBar user={this.props.user}/>
           <Switch>
             <Route exact path='/' component={LandingPage}/>
             <Route path='/login' component={LogIn}/>
-            <Route path='/:id/homepage' render={() => (<Homepage />)}/>
+            <Route path='/homepage' render={(user) => (<Homepage user={this.props.user}/>)}/>
+            <Route path='/collaborations' render={(user) => (<Collaboration user={this.props.user}/>)}/>
             <Route path='/register' component={Register}/>
           </Switch>
       </div>

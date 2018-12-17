@@ -1,5 +1,6 @@
 // Action Creators
 const getUser = (user) => ({type: 'LOGIN_USER', payload: user })
+// const logOut = () => ({type: 'LOGOUT_USER' })
 
 // Thunk creators 
 
@@ -15,7 +16,10 @@ export const newUser = (userInfo) => {
             }, 
             body: JSON.stringify({user: userInfo})
         }).then(res => res.json())
-        .then(res => dispatch(getUser(res.user)))
+        .then(res => {
+            localStorage.setItem('token', res.jwt)
+            dispatch(getUser(res.user))
+        })
     }
 }
 
@@ -51,3 +55,10 @@ export const findUser = (token) => {
           .then(res => dispatch(getUser(res.user)))
     }
 }
+
+// export const logOutUser = () => {
+//     return dispatch => {
+//         localStorage.removeItem('token')
+//         dispatch(logOut())
+//     }
+// }

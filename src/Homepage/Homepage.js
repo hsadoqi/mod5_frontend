@@ -1,24 +1,37 @@
 import React, { Component } from 'react'
 import { withRouter } from 'react-router'
-import { connect } from 'react-redux'
-import ProjectCard from '../Homepage/Homepage'
+// import { connect } from 'react-redux'
+import ProjectCard from '../ProjectCard/ProjectCard'
+import './Homepage.css'
 
-class Profile extends Component {
+let projectArray
+
+class Homepage extends Component {
+    state = {
+        projects: []
+    }
+
+    // componentDidUpdate(){
+    //     if(this.props.user.projects){
+    //         this.setState({
+    //             projects: this.props.user.projects
+    //         })
+    //     }
+    // }
 
     render(){
+        if(this.props.user.projects){
+            projectArray = this.props.user.projects.map((project) => <ProjectCard key={project.id} project={project}/> )
+        }
+
         return (
-            <div>
+            <div className='project-container'>
                 <h1>Welcome {this.props.user.name}</h1>
-                <ProjectCard user={this.props.user}/>
+                {projectArray ? projectArray : null }
             </div>
         )
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        user: state.user
-    }
-}
 
-export default withRouter(connect(mapStateToProps)(Profile))
+export default withRouter(Homepage)
