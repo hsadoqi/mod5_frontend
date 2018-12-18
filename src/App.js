@@ -9,6 +9,7 @@ import Register from './Register/Register'
 import { connect } from 'react-redux'
 import { findUser } from './store/actions/userActions'
 import Collaboration from './Collaboration/Collaboration'
+import EditProfile from './EditProfile/EditProfile'
 
 class App extends Component {
 
@@ -36,6 +37,7 @@ class App extends Component {
             <Route path='/homepage' render={(user) => (<Homepage user={this.props.user}/>)}/>
             <Route path='/collaborations' render={(user) => (<Collaboration user={this.props.user}/>)}/>
             <Route path='/register' component={Register}/>
+            <Route path='/edit-profile' render={(user) => (<EditProfile user={this.props.user}/>)}/>
           </Switch>
       </div>
     );

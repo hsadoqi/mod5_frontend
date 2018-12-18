@@ -3,6 +3,7 @@ import './NavBar.css'
 import { animateScroll as scroll } from "react-scroll";
 import { withRouter} from 'react-router'
 import { Link } from 'react-router-dom'
+import DropDown from './DropDown/DropDown'
 // import { connect } from 'react-redux'
 // import { findUser } from '../store/actions/userActions'
 // import Switch from 'react-switch'
@@ -66,7 +67,12 @@ class NavBar extends Component {
         return(
             <div className='wrapper'>
                 <nav className='black'>
-                    <div className='logo'><Link to='/'>LOGO</Link></div>
+                {token ? 
+                    <div className="logo toolbar_user-icon">
+                        <Link to='/'><img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" alt=""/></Link>
+                        <DropDown/>
+                    </div> :  <div className='logo'><Link to='/'>LOGO</Link></div>}
+
                     <ul>
                         {token ? <li onClick={this.handleChange}><Link to='/homepage' name='project' className='profile'>Your Projects</Link></li> : null}
                         {token ? 
