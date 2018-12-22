@@ -31,6 +31,7 @@ class Homepage extends Component {
     }
 
     render(){
+        console.log(this.props.user)
         // console.log(this.state.visible)
         if(this.props.user.projects){
             projectArray = this.props.user.projects.map((project) => <ProjectCard key={project.id} project={project} handleClick={this.handleClick}/> )

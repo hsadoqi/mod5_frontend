@@ -22,6 +22,7 @@ class Register extends Component {
     handleSubmit = (e) => {
         e.preventDefault()
         this.props.newUser(this.state)
+        this.props.history.push('/homepage')
     }
 
     render(){

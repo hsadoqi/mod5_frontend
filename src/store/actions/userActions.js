@@ -1,5 +1,6 @@
 // Action Creators
 const getUser = (user) => ({type: 'LOGIN_USER', payload: user })
+const updateUser = (user) => ({type: 'UPDATE_USER', payload: user })
 // const logOut = () => ({type: 'LOGOUT_USER' })
 
 // Thunk creators 
@@ -45,14 +46,30 @@ export const logInUser = (userInfo) => {
 
 export const findUser = (token) => {
     return dispatch => {
-        return fetch('http://localhost:3000/current_user', {
-            headers: {
+        return fetch('http://localhost:3000/current_user', {    
+        headers: {
               'Content-type': 'application/json', 
               Accepts: 'application/json', 
               Authorization: token
             }
           }).then(res => res.json())
           .then(res => dispatch(getUser(res.user)))
+    }
+}
+
+export const editProfile = (userInfo, id) => {
+    console.log(userInfo)
+    console.log(id)
+    return dispatch => {
+        return fetch(`http://localhost:3000/users/${id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-type': 'application/json', 
+                Accepts: 'application/json'
+            }, 
+            body: JSON.stringify({user: userInfo})
+        }).then(res => res.json())
+        .then(res => dispatch(updateUser(res)))
     }
 }
 

@@ -35,6 +35,7 @@ class NavBar extends Component {
     }
 
     componentDidUpdate(){
+        // console.log("in componentDidUpdate", this.props.user.username)
         let token = localStorage.getItem('token')
         if(token){
             let project = document.getElementsByName('project')
@@ -61,7 +62,7 @@ class NavBar extends Component {
 
 
     render(){
-        // console.log(this.props.user)
+        // console.log("in redner", this.props.user.username)
         let token = localStorage.getItem('token')
         // console.log(this.state.profile)
         return(
@@ -69,7 +70,9 @@ class NavBar extends Component {
                 <nav className='black'>
                 {token ? 
                     <div className="logo toolbar_user-icon">
-                        <Link to='/'><img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" alt=""/></Link>
+                        {this.props.user.img ? 
+                        <Link to={this.props.user.username}><img src={this.props.user.img} alt=""/></Link> :
+                        <Link to={this.props.user.username ? this.props.user.username : '/'}><img src='http://msluxuryvip.com/wp-content/uploads/2018/06/medium-default-avatar.png' alt=''/></Link> }
                         <DropDown/>
                     </div> :  <div className='logo'><Link to='/'>LOGO</Link></div>}
 

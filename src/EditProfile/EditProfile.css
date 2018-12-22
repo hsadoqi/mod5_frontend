@@ -1,0 +1,44 @@
+form label {
+    text-align:center;
+    width: 50%;
+    margin: 650px;
+
+}
+
+form{
+    justify-content:center;
+    display:block;
+    margin: 0 auto;
+}
+
+form{
+    margin-top: 30px
+}
+
+form h1{
+    text-align:center;
+}
+
+form h3{
+    text-align:center;
+}
+
+form h4{
+    text-align: center
+}
+
+form p{
+    text-align: center
+}
+
+form img {
+    margin: 0 auto;
+    display: block;
+}
+
+.submit-btn {
+    display: block;
+    width: 50%;
+    margin: 10px;
+    margin: 0 auto;
+}

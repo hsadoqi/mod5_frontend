@@ -6,11 +6,12 @@ class ProjectCard extends Component {
 
     render(){
         // console.log(this.props.user.projects)
-        // console.log(this.props.project)
+        console.log(this.props.project)
         return(
             <div className='project-card' onClick={(e) => this.props.handleClick(e, this.props.project)}>
-               <h1>{this.props.project.title}</h1>
-               <img src={this.props.project.img} alt=''/>
+                <img src={this.props.project.img} alt=''/>
+                <h5>{this.props.project.title}</h5>
+                <div className='project-div'><p >{this.props.project.description}</p></div>
             </div>
         )
     }
