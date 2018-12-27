@@ -2,7 +2,7 @@ const initialState = {
     user: {}
 }
 
-const reducer = (state = initialState, action) => {
+const userReducer = (state = initialState, action) => {
     // console.log(action)
     // console.log(state.user)
     switch(action.type){
@@ -19,4 +19,4 @@ const reducer = (state = initialState, action) => {
     }
 }
 
-export default reducer
+export default userReducer

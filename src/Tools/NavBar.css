@@ -13,6 +13,7 @@ nav{
     padding: 10px 90px;
     box-sizing:border-box;
     z-index:1;
+    min-width: 500px;
     /* transition: .3s; */
 }
 
@@ -45,10 +46,12 @@ nav ul{
     margin: 0;
     padding: 0;
     display: flex;
+    /* position:relative; */
 }
 
 nav ul li {
     list-style: none;
+    /* display:flex; */
 }
 
 nav ul li a{
@@ -57,6 +60,7 @@ nav ul li a{
     padding: 12px 30px;
     text-decoration:none;
     text-transform: uppercase;
+    /* display:flex; */
     /* transition: .3s; */
 }
 
@@ -72,11 +76,13 @@ nav ul li a {
     background: black;
     color: #fff;
     margin:10px;
-    border-radius:6px;
+    border-radius:10px;
+    /* float:right;     */
 }
 
 nav.black ul li a.profile {
     margin: -5px;
+    /* max-width: 200px; */
 }
 
 nav.black ul li a.profile:hover,
@@ -108,3 +114,4 @@ nav.black ul li a.select {
     max-height: 60px;
     max-width: 175px;
 } 
+

@@ -4,23 +4,15 @@ import { withRouter } from 'react-router'
 import ProjectCard from '../ProjectCard/ProjectCard'
 import './Homepage.css'
 import PopUp from '../Modal/Modal'
+import HomepageNav from '../HomepageNav/HomepageNav'
 
 let projectArray
 
 class Homepage extends Component {
     state = {
-        projects: [], 
         visible: false, 
         selectedPost: ''
     }
-
-    // componentDidUpdate(){
-    //     if(this.props.user.projects){
-    //         this.setState({
-    //             projects: this.props.user.projects
-    //         })
-    //     }
-    // }
 
     handleClick = (e, project) => {
         // console.log(project)
@@ -31,18 +23,16 @@ class Homepage extends Component {
     }
 
     render(){
-        console.log(this.props.user)
-        // console.log(this.state.visible)
         if(this.props.user.projects){
             projectArray = this.props.user.projects.map((project) => <ProjectCard key={project.id} project={project} handleClick={this.handleClick}/> )
         }
 
         return (
             <div className='project-homepage'>
+                <HomepageNav user={this.props.user}/>
                 {this.state.visible ? <PopUp visible={this.state.visible} project={this.state.selectedPost} handleClick={this.handleClick}/> : null}
-                <h1 style={{textAlign:'center'}}>Welcome {this.props.user.name}</h1>
                 <div className='project-container'>
-                {projectArray ? projectArray : null }
+                    {projectArray ? <div className='project-cards'>{projectArray}</div> : null }
                 </div>
             
             </div>

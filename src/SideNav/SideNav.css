@@ -1,0 +1,40 @@
+.sidenav {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 200px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 0; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    margin-left: 150px;
+    margin-top: 104px;
+    /* margin-bottom:500px; */
+    background-color: white; /* Black */
+    /* overflow-x: hidden; Disable horizontal scroll */
+    padding-top: 20px;
+    border: 2px solid black;
+    padding: 8px;
+    justify-content:center;
+    text-align:center;
+    display: flex;
+    border-radius: 20px;
+    box-shadow: 0 0 20px 2px black;
+  }
+
+.social-media-icons{
+    margin-top: 20px;
+    display:flex;
+    justify-content:center;
+}
+
+.profile-bio{
+    padding: 10px;
+}
+
+.profile-icon img{
+    max-width: 200px;
+    max-height: 400px;
+}
+
+
+
+

@@ -2,56 +2,44 @@ body{
     background-color: lightgray
 }
 
-.profile-container {
+/* .profile-container { */
     /* border: 5px solid black; */
-    margin: 30px;
-    padding: 8px;
+    /* margin: 30px;
+    margin-left: 160px;
+    padding: 8px; */
     /* max-height: 300px; */
-    display: flex;
+    /* display: flex; */
     /* display:flex */
-    border-radius: 20px;
+    /* border-radius: 20px;
     box-shadow: 0 0 20px 2px black;
     max-height: 50em;
     max-width: 40em;
-    margin-left: 150px
-}
-.profile-container h1{
-    display: flex;
-    margin: 10px;
-    margin-left: 75px;
-    font-size: 20px
-}
+    margin-left: 150px */
+/* } */
 
-.social-media-icons{
-    /* display: inline block; */
-    margin-left: 65px;
-    margin-bottom: 10px;
-}
-
-.profile-icon img{
-    max-width: 200px;
-    max-height: 400px;
-}
 .project-cards{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.profile-bio{
-    justify-content:right;
-    margin-top: 50px;
-}
-
 .profile-page{
-    margin: 0 400px 0 400px;
+    margin: 15px 300px 0 400px;
+    padding: 20px;
     /* margin-left: 250px; */
-    border: 1px solid black;
+    /* border: 1px solid black; */
     background-color: white;
     /* display:flex; */
+    border-radius: 10px;
+    box-shadow: 0 0 10px 2px black;
+    overflow:auto;
 }
 
 .profile-page h2{
     text-align:center;
     margin: 30px;
+}
+
+.project-container{
+
 }

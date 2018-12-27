@@ -6,7 +6,7 @@ const updateUser = (user) => ({type: 'UPDATE_USER', payload: user })
 // Thunk creators 
 
 export const newUser = (userInfo) => {
-    console.log(userInfo)
+    // console.log(userInfo)
     return(dispatch) => {
         // console.log(dispatch)
         return fetch (`http://localhost:3000/users`, {
@@ -21,6 +21,7 @@ export const newUser = (userInfo) => {
             localStorage.setItem('token', res.jwt)
             dispatch(getUser(res.user))
         })
+        .catch(console.error)
     }
 }
 
@@ -41,6 +42,7 @@ export const logInUser = (userInfo) => {
                 localStorage.setItem('token', res.jwt)
                 dispatch(getUser(res.user))
             })
+            .catch(console.error)
         }
     }
 
@@ -54,12 +56,13 @@ export const findUser = (token) => {
             }
           }).then(res => res.json())
           .then(res => dispatch(getUser(res.user)))
+          .catch(console.error)
     }
 }
 
 export const editProfile = (userInfo, id) => {
-    console.log(userInfo)
-    console.log(id)
+    // console.log(userInfo)
+    // console.log(id)
     return dispatch => {
         return fetch(`http://localhost:3000/users/${id}`, {
             method: 'PATCH',
@@ -70,6 +73,7 @@ export const editProfile = (userInfo, id) => {
             body: JSON.stringify({user: userInfo})
         }).then(res => res.json())
         .then(res => dispatch(updateUser(res)))
+        .catch(console.error)
     }
 }
 

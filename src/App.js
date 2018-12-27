@@ -11,6 +11,7 @@ import { findUser } from './store/actions/userActions'
 import Collaboration from './Collaboration/Collaboration'
 import EditProfile from './EditProfile/EditProfile'
 import Profile from './Profile/Profile'
+import NewProject from './NewProject/NewProject'
 
 class App extends Component {
 
@@ -21,15 +22,7 @@ class App extends Component {
     }
   }
 
-  // componentDidUpdate(prevProps){
-  //   // if(prevProps.user !== this.props.user ){
-  //     //   this.props.history.push(`/homepage`)
-  //     //  }
-  //   }
-    
-    
     render() {
-      // console.log("in App", this.props.user)
     return (
       <div className="App">
           <NavBar user={this.props.user}/>
@@ -40,7 +33,8 @@ class App extends Component {
             <Route path='/collaborations' render={(user) => (<Collaboration user={this.props.user}/>)}/>
             <Route path='/register' component={Register}/>
             <Route path='/edit-profile' render={(user) => (<EditProfile user={this.props.user}/>)}/>
-            <Route path='/:username' render={(user) => (<Profile user={this.props.user}/>)}/>
+            <Route path='/new-project' render={(user) => (<NewProject user={this.props.user}/>)}/>
+            <Route exact path='/:username' render={(user) => (<Profile user={this.props.user}/>)}/>
           </Switch>
       </div>
     );
@@ -48,7 +42,7 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  return {user: state.user}
+  return {user: state.user.user}
 }
 
 const mapDispatchToProps = dispatch => {

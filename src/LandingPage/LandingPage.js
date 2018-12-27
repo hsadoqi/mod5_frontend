@@ -47,7 +47,6 @@ class LandingPage extends Component {
 
           <div className="pimg4">
             <div className='ptext'>
-              {/* <Register /> */}
             </div>
           </div>
         </div>

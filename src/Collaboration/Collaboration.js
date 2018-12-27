@@ -1,13 +1,13 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component} from 'react'
 import PopUp from '../Modal/Modal'
 import ProjectCard from '../ProjectCard/ProjectCard'
+import HomepageNav from '../HomepageNav/HomepageNav'
 
 let applicationArray 
 let projectArray
 
 class Collaboration extends Component {
     state = {
-        projects: [], 
         visible: false, 
         selectedPost: ''
     }
@@ -20,8 +20,6 @@ class Collaboration extends Component {
         })
     }
 
-    
-
     render(){
         console.log(this.props.user.applications)
         if(this.props.user.applications){
@@ -31,15 +29,16 @@ class Collaboration extends Component {
                 <ProjectCard key={app.role.project.id} project={app.role.project} handleClick={this.handleClick}/>
             </div>)
                     
-            
         }
         
 
         return (
             <div className='project-homepage'>
+                <HomepageNav user={this.props.user}/>
                 {this.state.visible ? <PopUp visible={this.state.visible} project={this.state.selectedPost} handleClick={this.handleClick}/> : null}
-                <h1 style={{textAlign:'center'}}>Welcome {this.props.user.name}</h1>
-                {projectArray ? projectArray : null }
+                <div className='project-container'>
+                    {projectArray ? <div className='project-cards'>{projectArray}</div> : null }
+                </div>
             </div>
         )
     }

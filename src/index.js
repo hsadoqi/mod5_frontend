@@ -9,6 +9,7 @@ import { BrowserRouter} from 'react-router-dom'
 
 // console.log(store)
 
+
 ReactDOM.render(<Provider store={store}>
         <BrowserRouter>
             <App />

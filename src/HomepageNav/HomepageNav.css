@@ -1,0 +1,44 @@
+.sidenav {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 200px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 0; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    margin-left: 150px;
+    margin-top: 104px;
+    /* margin-bottom:500px; */
+    background-color: white; /* Black */
+    /* overflow-x: hidden; Disable horizontal scroll */
+    /* padding-top: 20px; */
+    border: 2px solid black;
+    /* padding: 8px; */
+    justify-content:center;
+    /* text-align:center; */
+    display: flex;
+    border-radius: 20px;
+    box-shadow: 0 0 20px 2px black;
+    /* list-style-type:none; */
+    margin: 0 auto;
+    padding: 0;
+}
+
+.sidenav ul li{
+    list-style-type:none;
+    text-align:center;
+    display:inline-block;
+    padding-inline-start: 0px;
+
+}
+
+.sidenav ul li a{
+    position: relative; /* Position them relative to the browser window */
+    /* left: -80px; Position them outside of the screen */
+    transition: 0.3s; /* Add transition on hover */
+    padding: 10px; /* 15px padding */
+    width: 100px; /* Set a specific width */
+    text-decoration: none; /* Remove underline */
+    font-size: 20px; /* Increase font size */
+    /* color: white; White text color */
+    border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
+}
