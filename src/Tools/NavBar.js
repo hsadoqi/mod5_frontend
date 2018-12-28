@@ -71,7 +71,7 @@ class NavBar extends Component {
                 {token ? 
                     <div className="logo toolbar_user-icon">
                         {this.props.user.img ? 
-                        <Link to={this.props.user.username}><img src={this.props.user.img} alt=""/></Link> :
+                        <Link to={`/${this.props.user.username}`}><img src={this.props.user.img} alt=""/></Link> :
                         <Link to={this.props.user.username ? this.props.user.username : '/'}><img src='http://msluxuryvip.com/wp-content/uploads/2018/06/medium-default-avatar.png' alt=''/></Link> }
                         <DropDown/>
                     </div> :  <div className='logo'><Link to='/'>LOGO</Link></div>}

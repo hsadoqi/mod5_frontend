@@ -14,6 +14,7 @@ class EditProfile extends Component {
 
     handleChange = (e) => {
         e.preventDefault()
+        console.log(e.target)
         this.setState({
             [e.target.name]: e.target.value
         })
@@ -63,9 +64,42 @@ class EditProfile extends Component {
                 <h3>Bio</h3>
                 <h4>{this.props.user.bio}</h4><p onClick={this.handleClick}>Edit</p>
                 <input type='hidden' name='bio' placeholder='About Me' value={this.state.bio} onChange={this.handleChange}/>
-                <h3>Interests</h3>
-                <h4>{this.props.user.interests}</h4><p onClick={this.handleClick}>Edit</p>
-                <input type='hidden' name='interests' placeholder='Interests' value={this.state.interests} onChange={this.handleChange}/>
+                <h3>First Preference</h3>
+                <h4>{this.props.user.firstPreference}</h4>
+                <div className='preferences'>
+                <select name='firstPreference' className='preferences-options' onChange={this.handleChange}>
+                    <option value='Photography'>Photography</option>
+                    <option value='Theater'>Theater</option>
+                    <option value='Music'>Music</option>
+                    <option value='Performance'>Performance</option>
+                    <option value='Art'>Art</option>
+                    <option value='Dance'>Dance</option>
+                </select>
+                </div>
+                <h3>Second Preference</h3>
+                <h4>{this.props.user.secondPreference}</h4>
+                <div className='preferences'>
+                <select name='secondPreference' className='preferences-options' onChange={this.handleChange}>
+                    <option value='Photography'>Photography</option>
+                    <option value='Theater'>Theater</option>
+                    <option value='Music'>Music</option>
+                    <option value='Performance'>Performance</option>
+                    <option value='Art'>Art</option>
+                    <option value='Dance'>Dance</option>
+                </select>
+                </div>
+                <h3>Third Preference</h3>
+                <h4>{this.props.user.thirdPreference}</h4>
+                <div className='preferences'>
+                <select name='thirdPreference' className='preferences-options' onChange={this.handleChange}>
+                    <option value='Photography'>Photography</option>
+                    <option value='Theater'>Theater</option>
+                    <option value='Music'>Music</option>
+                    <option value='Performance'>Performance</option>
+                    <option value='Art'>Art</option>
+                    <option value='Dance'>Dance</option>
+                </select>
+                </div>
                 <button className='submit-btn'>Update</button>
             </form>
             

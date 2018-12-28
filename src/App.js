@@ -12,8 +12,12 @@ import Collaboration from './Collaboration/Collaboration'
 import EditProfile from './EditProfile/EditProfile'
 import Profile from './Profile/Profile'
 import NewProject from './NewProject/NewProject'
+import Project from './Project/Project'
 
 class App extends Component {
+  state = {
+    selectedPost: ''
+  }
 
   componentDidMount = () => {
     let token = localStorage.getItem('token')
@@ -34,6 +38,7 @@ class App extends Component {
             <Route path='/register' component={Register}/>
             <Route path='/edit-profile' render={(user) => (<EditProfile user={this.props.user}/>)}/>
             <Route path='/new-project' render={(user) => (<NewProject user={this.props.user}/>)}/>
+            <Route exact path='/projects/:id' render={(project) => (<Project project={this.props.selectedProject}/>)}/>
             <Route exact path='/:username' render={(user) => (<Profile user={this.props.user}/>)}/>
           </Switch>
       </div>
@@ -42,7 +47,8 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  return {user: state.user.user}
+  console.log(state)
+  return {user: state.user.user, selectedProject: state.projects.selectedProject}
 }
 
 const mapDispatchToProps = dispatch => {

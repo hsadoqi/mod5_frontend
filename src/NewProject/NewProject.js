@@ -7,7 +7,7 @@ import { createProject } from '../store/actions/projectActions'
 class NewProject extends Component {
     state = {
         title: '', 
-        img: '', 
+        img: 'https://i.ytimg.com/vi/_nwYYFV03dM/maxresdefault.jpg', 
         description: '', 
         content: '', 
         category: '', 

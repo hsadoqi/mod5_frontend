@@ -3,10 +3,15 @@ import React, {Component} from 'react'
 import { SocialIcon } from 'react-social-icons';
 import {withRouter} from 'react-router'
 
+let interests 
+
 class SideNav extends Component {
 
     
     render(){
+
+        interests = `${this.props.user.firstPreference ? `${this.props.user.firstPreference}` : ''}${this.props.user.secondPreference ? `, ${this.props.user.secondPreference}` : ''}${this.props.user.thirdPreference ? `, ${this.props.user.thirdPreference}` : ''}`
+
         return(
             <div className='sidenav'>
 
@@ -22,6 +27,9 @@ class SideNav extends Component {
                 </div>
                 <div className='profile-bio'>
                     <p>{this.props.user.bio}</p>
+                </div>
+                <div className='profile-interests'>
+                    <strong>Interests:</strong> {interests}
                 </div>
                 </div >
             </div>

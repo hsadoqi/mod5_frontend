@@ -9,6 +9,12 @@ let arrayOfRoles
 
 class PopUp extends Component {
 
+    handleClick = (e) => {
+        e.preventDefault()
+        this.props.handleClick(e, this.props.project)
+        this.props.history.push(`/projects/${this.props.project.id}`)
+    }
+
     render(){
         console.log(this.props.project)
         // console.log(this.props.project.roles)
@@ -28,8 +34,11 @@ class PopUp extends Component {
                 </Modal.Description>
                 </Modal.Content>
                 <Modal.Actions>
-                <Button primary onClick={this.props.handleClick}>
-                    Close <Icon name='right chevron' />
+                <Button onClick={this.props.handleClick}>
+                    Go Back <Icon name='right chevron' />
+                </Button>
+                <Button primary onClick={this.handleClick}>
+                    Go To Show Page <Icon name='right chevron' />
                 </Button>
                 </Modal.Actions>
             </Modal>

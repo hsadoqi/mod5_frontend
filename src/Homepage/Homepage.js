@@ -5,8 +5,9 @@ import ProjectCard from '../ProjectCard/ProjectCard'
 import './Homepage.css'
 import PopUp from '../Modal/Modal'
 import HomepageNav from '../HomepageNav/HomepageNav'
-
-let projectArray
+import {connect} from 'react-redux'
+import {selectedProject} from '../store/actions/projectActions'
+import ProjectContainer from '../ProjectContainer/ProjectContainer'
 
 class Homepage extends Component {
     state = {
@@ -20,25 +21,27 @@ class Homepage extends Component {
             visible: !this.state.visible, 
             selectedPost: project
         })
+        // this.props.handleClick(project)
+        this.props.selectProject(project)
     }
 
     render(){
-        if(this.props.user.projects){
-            projectArray = this.props.user.projects.map((project) => <ProjectCard key={project.id} project={project} handleClick={this.handleClick}/> )
-        }
 
         return (
             <div className='project-homepage'>
                 <HomepageNav user={this.props.user}/>
                 {this.state.visible ? <PopUp visible={this.state.visible} project={this.state.selectedPost} handleClick={this.handleClick}/> : null}
-                <div className='project-container'>
-                    {projectArray ? <div className='project-cards'>{projectArray}</div> : null }
-                </div>
-            
+                {this.props.user.projects ? <div><h1>Your Projects</h1><ProjectContainer projects={this.props.user.projects} handleClick={this.handleClick}/></div> : null }   
             </div>
         )
     }
 }
 
+const mapDispatchToProps = dispatch => {
+    return {
+        selectProject: (project) => dispatch(selectedProject(project))
+    }
+}
 
-export default withRouter(Homepage)
+
+export default withRouter(connect(null, mapDispatchToProps)(Homepage))

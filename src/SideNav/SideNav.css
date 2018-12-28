@@ -35,6 +35,10 @@
     max-height: 400px;
 }
 
+.profile-interests{
+    flex-wrap:wrap;
+    padding: 8px;
+}
 
 
 

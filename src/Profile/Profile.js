@@ -1,11 +1,19 @@
 import './Profile.css'
 import React, { Component} from 'react'
 // import { SocialIcon } from 'react-social-icons';
-import ProjectCard from '../ProjectCard/ProjectCard'
 import PopUp from '../Modal/Modal'
 import SideNav from '../SideNav/SideNav'
+import ProjectContainer from '../ProjectContainer/ProjectContainer'
+import {connect} from 'react-redux'
+import {selectedProject} from '../store/actions/projectActions'
+import {withRouter} from 'react-router-dom'
 
-let projectArray 
+let applicationArray 
+let projectArray
+let uncompleted
+let completed
+let collaborations
+let completedCollabs
 
 class Profile extends Component {
     state = {
@@ -15,25 +23,54 @@ class Profile extends Component {
     }
 
     handleClick = (e, project) => {
-        // console.log(project)
+        this.props.selectProject(project)
         this.setState({
             visible: !this.state.visible, 
             selectedPost: project
         })
     }
 
+    getPost = (e, project) => {
+        e.preventDefault()
+        this.props.selectProject(project)
+        let selProject = JSON.parse(localStorage.getItem('project'))
+        this.props.history.push(`/projects/${selProject.id}`)
+    }
+
     render(){
-        console.log(this.props.user)
+
         if(this.props.user.projects){
-            projectArray = this.props.user.projects.map((project) => <ProjectCard key={project.id} project={project} handleClick={this.handleClick}/> )
+            uncompleted = this.props.user.projects.filter((project) => project.completed === false)
+            completed = this.props.user.projects.filter((project) => project.completed === true)
         }
+
+        if(this.props.user.applications){
+            applicationArray = this.props.user.applications.filter((app) => app.approve === true)
+            projectArray = applicationArray.map((app) => app.role.project)
+            collaborations = projectArray.filter((proj) => proj.completed === false)
+            completedCollabs = projectArray.filter((proj) => proj.completed === true)
+        }
+
         return(
             <div>
                 {this.state.visible ? <PopUp visible={this.state.visible} project={this.state.selectedPost} handleClick={this.handleClick}/> : null}
                 <SideNav user={this.props.user}/>
                 <div className='profile-page'>
-                    <h2>Want to Collaborate?</h2>
-                    <div className='project-cards'>{projectArray}</div>  
+                    {uncompleted ?  <div><h1 style={{textAlign:'center'}}>Want to Collaborate With Me?</h1><ProjectContainer projects={uncompleted} handleClick={this.handleClick}/></div> : null }
+                </div>
+                <div className='profile-page'>
+                    {projectArray ? <div><h1 style={{textAlign:'center'}}>Projects I Am A Part Of</h1><ProjectContainer projects={projectArray} handleClick={(e, project) => this.getPost(e, project)}/></div> : null}
+                </div>
+                <div className='profile-page'>
+                    {completed || completedCollabs ?
+                        <div>
+                            <h1 style={{textAlign:'center'}}>Completed Projects</h1>
+                            <div style={{display:'flex', justifyContent:'center'}}>
+                                {completed ? <ProjectContainer projects={completed} handleClick={(e, project) => this.getPost(e, project)}/> : null}
+                                {completedCollabs ? <ProjectContainer projects={completedCollabs} handleClick={(e, project) => this.getPost(e, project)}/> : null}
+                            </div> 
+                        </div>
+                        : null }
                 </div>
             </div>
             
@@ -41,4 +78,10 @@ class Profile extends Component {
     }
 }
 
-export default Profile
+const mapDispatchToProps = dispatch => {
+    return {
+        selectProject: project => dispatch(selectedProject(project))
+    }
+}
+
+export default withRouter(connect(null, mapDispatchToProps)(Profile))
