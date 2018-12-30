@@ -1,6 +1,8 @@
 const initialState = {
     project: '', 
-    selectedProject: ''
+    selectedProject: '', 
+    projects: [], 
+    filteredProjects: []
 }
 
 
@@ -10,7 +12,10 @@ const projectReducer = (state = initialState, action) => {
             return {...state, project: action.payload}
         case('SELECT_PROJECT'):
             return {...state, selectedProject: action.payload}
-            
+        case('GET_PROJECTS'):
+            return {...state, projects: action.payload}
+        case('FILTER_PROJECTS'):
+            return {...state, filteredProjects: action.payload}
         default: 
             return state
     }

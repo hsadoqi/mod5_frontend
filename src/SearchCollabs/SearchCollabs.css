@@ -1,0 +1,29 @@
+.search-collaborators{
+    display:flex;
+    flex-direction:row;
+    margin: 0 auto;
+    padding: 20px;
+    
+}
+
+.search-container{
+    /* margin: 10px; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color:white;
+    margin-left: 200px;
+    margin-right: 200px;
+    padding: 20px;
+}
+
+/* display:flex;
+flex-wrap: wrap;
+text-align:center;
+justify-content:center;
+margin:0 auto;
+padding: 20px;
+flex-direction:row;
+background-color: white;
+overflow:auto;
+} */

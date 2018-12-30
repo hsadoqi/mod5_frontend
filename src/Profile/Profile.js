@@ -59,7 +59,7 @@ class Profile extends Component {
                     {uncompleted ?  <div><h1 style={{textAlign:'center'}}>Want to Collaborate With Me?</h1><ProjectContainer projects={uncompleted} handleClick={this.handleClick}/></div> : null }
                 </div>
                 <div className='profile-page'>
-                    {projectArray ? <div><h1 style={{textAlign:'center'}}>Projects I Am A Part Of</h1><ProjectContainer projects={projectArray} handleClick={(e, project) => this.getPost(e, project)}/></div> : null}
+                    {collaborations ? <div><h1 style={{textAlign:'center'}}>Projects I Am A Part Of</h1><ProjectContainer projects={collaborations} handleClick={(e, project) => this.getPost(e, project)}/></div> : null}
                 </div>
                 <div className='profile-page'>
                     {completed || completedCollabs ?

@@ -33,6 +33,7 @@
 .profile-icon img{
     max-width: 200px;
     max-height: 400px;
+    padding: 5px;
 }
 
 .profile-interests{

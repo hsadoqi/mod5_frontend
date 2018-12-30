@@ -1,6 +1,9 @@
 // Action Creators
 const getUser = (user) => ({type: 'LOGIN_USER', payload: user })
 const updateUser = (user) => ({type: 'UPDATE_USER', payload: user })
+const getUsers = (users) => ({type: 'GET_USERS', payload: users})
+const selectUser = (user) => ({type: 'SELECT_USER', payload: user})
+const filteredUsers = (users) => ({type: 'FILTER_USERS', payload: users})
 // const logOut = () => ({type: 'LOGOUT_USER' })
 
 // Thunk creators 
@@ -77,6 +80,33 @@ export const editProfile = (userInfo, id) => {
     }
 }
 
+export const getAllUsers = () => {
+    return dispatch => {
+        return fetch(`http://localhost:3000/users`)
+        .then(res => res.json())
+        .then(users => dispatch(getUsers(users)))
+        .catch(console.error)
+    }
+}
+
+export const getOtherUser = (userInfo) => {
+    return dispatch => {
+        return fetch(`http://localhost:3000/users/${userInfo.id}`)
+            .then(res => res.json())
+            .then(user => dispatch(selectUser(user)))
+    }
+}
+
+export const filterUsers = (pref) => {
+    return dispatch=> {
+        return fetch(`http://localhost:3000/users`)
+        .then(res => res.json())
+        .then(users => {
+            let filUsers = users.filter(user => user.firstPreference === pref || user.secondPreference === pref || user.thirdPreference === pref)
+            dispatch(filteredUsers(filUsers))
+        })
+    }
+}
 // export const logOutUser = () => {
 //     return dispatch => {
 //         localStorage.removeItem('token')
