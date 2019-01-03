@@ -15,7 +15,7 @@ const userReducer = (state = initialState, action) => {
         case('UPDATE_USER'):
             return {...state, user: action.payload}
         case('GET_USERS'):
-            return {...state, users: action.payload}
+            return {...state, users: [...state.users, action.payload]}
         case('SELECT_USER'):
             return {...state, selectedUser: action.payload}
         case('FILTER_USERS'):

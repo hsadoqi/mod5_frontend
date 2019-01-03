@@ -3,6 +3,7 @@ import React, {Component, Fragment} from 'react'
 import { Button, Header, Icon, Image, Modal} from 'semantic-ui-react'
 import {connect} from 'react-redux'
 import {getAllRoles} from '../store/actions/roleActions'
+import {withRouter} from 'react-router-dom'
 // import Application from '../Application/Application'
 
 let arrayOfRoles 
@@ -17,9 +18,10 @@ class CollabPopUp extends Component {
         this.props.getAllRoles(this.props.project)
     }
 
-    handleClick = (role) => {
-        console.log(role)
-        // e.preventDefault()
+    handleClick = (e) => {
+        // console.log(role)
+        e.preventDefault()
+        this.props.history.push(`/projects/${this.props.project.id}`)
         // arrayOfApplicants = <Application role={role}/>
         // this.setState({
         //     visible: !this.state.visible
@@ -28,7 +30,7 @@ class CollabPopUp extends Component {
     }
 
     render(){
-        // console.log('in popup')
+        console.log('in popup')
         if(this.props.roles){
             let array = this.props.roles.filter((role) => role.filled === false)
             arrayOfRoles = array.map((role) => <Fragment key={role.id}><h4>{role.title}</h4><button onClick={() => this.handleClick(role)}>Apply</button></Fragment>)
@@ -71,4 +73,4 @@ const mapDispatchToProps = dispatch => {
         getAllRoles: project => dispatch(getAllRoles(project))
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(CollabPopUp)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CollabPopUp))

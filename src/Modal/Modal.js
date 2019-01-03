@@ -54,7 +54,7 @@ class PopUp extends Component {
             // console.log(this.props.project.roles)
             arrayOfRoles = this.props.roles.map((role) => <Fragment key={role.id}>
                 <h1>{role.title}</h1>
-                <ApplicationContainer role={role}/>
+                <ApplicationContainer role={role} applicants={role.applicants} />
                 <br/>
             </Fragment>)
             // arrayOfRoles = this.props.roles.map((role) => <Fragment key={role.id}><h1>{role.title}</h1><Card.Group><Application role={role}/></Card.Group><br/></Fragment>)
@@ -78,7 +78,7 @@ class PopUp extends Component {
                 </Modal.Description>
                 </Modal.Content>
                 <Modal.Actions>
-                <Button onClick={this.props.handleClick}>
+                <Button onClick={this.props.clickHandler}>
                     Go Back <Icon name='right chevron' />
                 </Button>
                 <Button primary onClick={this.handleClick}>
@@ -93,7 +93,7 @@ class PopUp extends Component {
 const mapDispatchToProps = dispatch => {
     return {
         getRoles: project => dispatch(getAllRoles(project)), 
-        addRole: (project, role) => dispatch(addNewRole(project, role))
+        addRole: (project, role) => dispatch(addNewRole(project, role)), 
     }
 }
 

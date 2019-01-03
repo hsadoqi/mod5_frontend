@@ -29,6 +29,13 @@ class Homepage extends Component {
         this.props.getRoles(project)
     }
 
+    clickHandler = (e) => {
+        e.preventDefault()
+        this.setState({
+            visible: !this.state.visible
+        })
+    }
+
     render(){
         // console.log(this.props.project)
         // console.log(this.props.roles)
@@ -45,7 +52,7 @@ class Homepage extends Component {
         return (
             <div className='project-homepage'>
                 <HomepageNav user={this.props.user}/>
-                {this.state.visible ? <PopUp visible={this.state.visible} project={this.state.selectedPost} handleClick={(e, project) => this.handleClick(e, project)} roles={this.props.roles}/> : null}
+                {this.state.visible ? <PopUp visible={this.state.visible} project={this.state.selectedPost} handleClick={(e, project) => this.handleClick(e, project)} roles={this.props.roles} clickHandler={this.clickHandler}/> : null}
                 {projectArray ? <div><h1>Your Projects</h1><ProjectContainer projects={projectArray} handleClick={this.handleClick}/></div> : null }   
             </div>
         )

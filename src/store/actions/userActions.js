@@ -107,6 +107,15 @@ export const filterUsers = (pref) => {
         })
     }
 }
+
+export const getApplicants = (id) => {
+    return dispatch => {
+        return fetch(`http://localhost:3000/users/${id}`)
+        .then(res => res.json())
+        .then(user => dispatch(getUsers(user)))
+        .catch(console.error)
+    }
+}
 // export const logOutUser = () => {
 //     return dispatch => {
 //         localStorage.removeItem('token')

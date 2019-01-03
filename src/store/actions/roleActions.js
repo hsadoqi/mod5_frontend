@@ -1,6 +1,11 @@
 const addRole = (role) => ({type: 'ADD_ROLE', payload: role})
 const getRoles = (roles) => ({type: 'GET_ROLES', payload: roles})
 const fillRoles = (role) => ({type: 'FILL_ROLE', payload: role})
+const getAllApps =(apps) => ({type:'GET_APPS', payload: apps})
+const rejectApp = (app) => ({type: 'REJECT_APP', payload: app})
+const updateApp = (app) => ({type: 'UPDATE_APP', payload: app})
+export const fixStuff = () => ({type:'FIX_STUFF'})
+
 
 export const getAllRoles = (project) => {
     return(dispatch) => {
@@ -43,3 +48,40 @@ export const fillRole = (role) => {
         })
     }
 } 
+
+export const getApps = (role) => {
+    return dispatch => {
+        return fetch(`http://localhost:3000/roles/${role.id}`)
+        .then(res => res.json())
+        .then(role => {
+            dispatch(getAllApps(role.applications))
+        })
+    }
+}
+
+export const updateApplication = (app) => {
+    return(dispatch) => {
+        return fetch(`http://localhost:3000/applications/${app.id}`, {
+            method: 'PATCH', 
+            headers: {
+                'Content-type': 'application/json', 
+                Accept: 'application/json'
+            }, 
+            body: JSON.stringify({approve: true})
+        }).then(res => res.json())
+        .then(app => {
+            dispatch(updateApp(app))
+        })
+    }
+}
+
+
+export const rejectApplication = (app) => {
+
+    return(dispatch) => {
+        dispatch(rejectApp(app))
+        return fetch(`http://localhost:3000/applications/${app.id}`, {
+            method: 'DELETE'
+        })
+    }
+}
