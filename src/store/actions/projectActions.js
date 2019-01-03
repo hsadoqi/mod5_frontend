@@ -22,6 +22,7 @@ export const createProject = (project) => {
 }
 
 export const selectedProject = (project) => {
+    console.log(project)
     return (dispatch) => {
         return fetch(`http://localhost:3000/projects/${project.id}`)
         .then(res => res.json())

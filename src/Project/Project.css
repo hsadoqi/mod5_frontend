@@ -1,3 +1,32 @@
 .edit-inputs{
     display:block; 
 }
+
+.project-profile{
+    background-color:white;
+    margin-left: 300px;
+    margin-right: 300px;
+    margin-top: 100px;
+    margin-bottom: 50px;
+    text-align: center;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 2px black;
+}
+
+.project-header img{
+    max-height:100%;
+    max-width:100%;
+}
+
+.project-roles{
+    background-color:white;
+    margin-left: 300px;
+    margin-right: 300px;
+    /* margin-top: 100px; */
+    margin-bottom: 50px;
+    text-align: center;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px 2px black;
+}

@@ -4,12 +4,16 @@ import { createStore, applyMiddleware, compose, combineReducers } from 'redux'
 // import hogReducer from './reducers/hogReducer'
 import userReducer from './reducers/userReducer'
 import projectReducer from './reducers/projectReducer'
+import roleReducer from './reducers/roleReducer'
+import appReducer from './reducers/appReducer'
 
 // const store = createStore(reducer)
 
 const rootReducer = combineReducers({
   projects: projectReducer,
-  user: userReducer
+  user: userReducer, 
+  roles: roleReducer, 
+  apps: appReducer
 })
 
 const store = createStore(rootReducer, compose(applyMiddleware(thunk), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()))

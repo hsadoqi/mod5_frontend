@@ -22,7 +22,7 @@
 }
 
 .project-homepage{
-    margin: 15px 300px 0 400px;
+    margin: 15px 300px 0px 400px;
     padding: 20px;
     /* margin-left: 250px; */
     /* border: 1px solid black; */
@@ -31,4 +31,5 @@
     border-radius: 10px;
     box-shadow: 0 0 10px 2px black;
     overflow:auto;
+    margin-bottom: 10px;
 }

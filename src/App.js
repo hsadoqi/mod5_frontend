@@ -30,7 +30,7 @@ class App extends Component {
   }
 
     render() {
-      console.log(this.props)
+      // console.log(this.props)
     return (
       <div className="App">
           <NavBar user={this.props.user}/>
@@ -43,7 +43,7 @@ class App extends Component {
             <Route path='/edit-profile' render={(user) => (<EditProfile user={this.props.user}/>)}/>
             <Route path='/new-project' render={(user) => (<NewProject user={this.props.user}/>)}/>
             <Route path='/collaborators' render={(user) => (<SearchCollabs user={this.props.user}/>)}/> 
-            <Route path='/users/:username' render={(user) => (<Collaborator user={this.props.selectedUser}/>)}/>
+            <Route exact path='/users/:username' render={(user) => (<Collaborator user={this.props.selectedUser}/>)}/>
             <Route path='/search-projects' render={(user) => (<SearchProjects user={this.props.user}/>)}/>
             <Route exact path='/projects/:id' render={(project) => (<Project project={this.props.selectedProject}/>)}/>
             <Route exact path='/:username' render={(user) => (<Profile user={this.props.user}/>)}/>
@@ -55,8 +55,11 @@ class App extends Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state)
-  return {user: state.user.user, selectedProject: state.projects.selectedProject, selectedUser: state.user.selectedUser}
+  // console.log(state)
+  return {
+    user: state.user.user, 
+    selectedProject: state.projects.selectedProject, 
+    selectedUser: state.user.selectedUser}
 }
 
 const mapDispatchToProps = dispatch => {

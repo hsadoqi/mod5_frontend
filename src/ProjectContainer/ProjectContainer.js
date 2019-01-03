@@ -7,8 +7,8 @@ let projectArray
 class ProjectContainer extends Component {
 
     render(){
-        projectArray = this.props.projects.map((project) => <ProjectCard key={project.id} project={project} handleClick={this.props.handleClick}/>)
-        console.log(this.props.projects)
+        projectArray = this.props.projects.map((project) => <ProjectCard key={project.id} project={project} handleClick={(e, project) => this.props.handleClick(e, project)}/>)
+        // console.log(this.props.projects)
         return(
             <div className='project-container'>
                 {projectArray}

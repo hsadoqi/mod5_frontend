@@ -2,7 +2,8 @@ const initialState = {
     user: {}, 
     users: [], 
     selectedUser: '', 
-    filUsers: []
+    filUsers: [], 
+    projects: []
 }
 
 const userReducer = (state = initialState, action) => {
@@ -10,7 +11,7 @@ const userReducer = (state = initialState, action) => {
     // console.log(state.user)
     switch(action.type){
         case('LOGIN_USER'):
-            return {...state, user: action.payload}
+            return {...state, user: action.payload, projects: action.payload.projects}
         case('UPDATE_USER'):
             return {...state, user: action.payload}
         case('GET_USERS'):

@@ -21,17 +21,15 @@ class Collaboration extends Component {
     }
 
     render(){
-        console.log(this.props.user.applications)
+        // console.log(this.props.user.applications)
         if(this.props.user.applications){
             applicationArray = this.props.user.applications.filter((app) => app.approve === true )
             projectArray = applicationArray.map((app) => <div>
-                <h1>{app.role.title}</h1>
-                <ProjectCard key={app.role.project.id} project={app.role.project} handleClick={this.handleClick}/>
+                <ProjectCard key={app.role.project.id} role={app.role.title} project={app.role.project} handleClick={this.handleClick}/>
             </div>)
                     
         }
         
-
         return (
             <div className='project-homepage'>
                 <HomepageNav user={this.props.user}/>
